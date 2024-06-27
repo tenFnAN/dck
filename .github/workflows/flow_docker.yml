@@ -1,0 +1,52 @@
+# Name of the workflow
+name: scrap_docker
+# Event - What starts this workflow?
+on:
+  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string 
+    # 1. Entry: Minute when the process will be started [0-60]
+    # 2. Entry: Hour when the process will be started [0-23]
+    # 3. Entry: Day of the month when the process will be started [1-28/29/30/31]
+    # 4. Entry: Month of the year when the process will be started [1-12]
+    # 5. Entry: Weekday when the process will be started [0-6] [0 is Sunday]
+    # So according to this '0 9 * * 1' will run 9:00 every monday.
+  - cron:  '0 1 * * *'
+permissions:
+  contents: write
+  
+# Jobs - What the computer should do? 
+jobs:
+  scrap:
+    runs-on: ubuntu-latest
+    services:
+      # https://stackoverflow.com/questions/77936473/how-can-i-access-file-downloaded-using-rselenium-in-github-actions
+      selenium:
+        image: selenium/standalone-firefox:111.0-20230328
+        ports:
+          - '4444:4444'
+        volumes:
+          - /github/workspace/data/downloads:/home/seluser/Downloads
+    steps:
+# Install R
+      - name: Checkout repository
+        uses: actions/checkout@v2
+ 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2  
+        
+      - name: Run R script
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/scrap_image:v1 Rscript scrap.R
+# Commit & push
+      - name: Commit files
+        run: |
+          git config --local user.name actions-user
+          git config --local user.email "actions@github.com"
+          git add data/*
+          git commit -am "GH ACTION Headlines $(date)"
+          git pull origin main
+          git push origin main
+        env:
+          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+          username: github-actions
