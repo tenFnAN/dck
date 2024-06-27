@@ -33,7 +33,7 @@ for(type_ in c('atp', 'wta')){
 }
 
 tns_schedule %>%
-  write.csv(paste0('schedule_tour_', round(as.numeric(Sys.time())), '.csv')) 
+  write.csv(paste0('data/schedule_tour_', round(as.numeric(Sys.time())), '.csv')) 
 
 
 if(F){
