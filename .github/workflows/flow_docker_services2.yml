@@ -1,5 +1,5 @@
 # Name of the workflow
-name: scrap_dcr_services
+name: scrap_dcr_services2
 # Event - What starts this workflow?
 on:
   workflow_dispatch:
