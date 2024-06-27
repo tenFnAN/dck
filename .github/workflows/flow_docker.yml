@@ -37,7 +37,7 @@ jobs:
         
       - name: Run R script
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/scrap_image:v1 Rscript scrap.R
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/scrap:latest Rscript scrap.R
 # Commit & push
       - name: Commit files
         run: |
