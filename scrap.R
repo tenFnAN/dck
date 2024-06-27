@@ -36,7 +36,7 @@ for(type_ in c('atp', 'wta')){
   print(.Platform$OS.type) 
   
   # scrap_start_session()
-  scrap_start_session2( ) # check = F
+  scrap_start_session( ) # check = F
   print('session have started')
   print(names(remote_driver))
   
