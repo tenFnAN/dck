@@ -33,6 +33,33 @@ for(type_ in c('atp', 'wta')){
   tns_schedule = rbind(tns_schedule, tb_schedule_)
 }
 
+  print(.Platform$OS.type) 
+  
+  # scrap_start_session()
+  scrap_start_session2( ) # check = F
+  print('session have started')
+  print(names(remote_driver))
+  
+  scrap_navigate('https://www.flashscore.com/tennis/')
+  Sys.sleep(3) 
+  print(remote_driver$getTitle())
+  print(remote_driver$getCurrentUrl())
+  
+  www_ = remote_driver$getPageSource()[[1]] %>% read_html()
+  tb_ = www_ %>% 
+    html_nodes('.event__match') %>% 
+    polite::html_attrs_dfr() %>%
+    fselect(id, .text) %>% 
+    funique() %>%
+    fmutate(
+      id    = substring(id, 5), 
+      type  = ifelse(str_count(.text, '[a-z]{3,} [A-Z]{1}\\.') >= 3, 'double', 'single'), 
+      .text = gsub('FRO', '', .text) # TWK
+    ) 
+  
+  print(head(tb_))
+
+
 tns_schedule %>%
   write.csv(paste0('data/schedule_tour_', round(as.numeric(Sys.time())), '.csv')) 
 
