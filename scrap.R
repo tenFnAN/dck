@@ -1,6 +1,7 @@
 #load libs
 library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
-library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
+library(polite)    ; library(stringr)   ; library(readr)
+# library(rvest)
 
 source('functions.R')
 # https://stackoverflow.com/questions/65926899/how-can-i-get-an-r-environment-via-sys-getenv-with-github-actions-using-secret
