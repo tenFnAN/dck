@@ -28,7 +28,7 @@ jobs:
         volumes:
           - /github/workspace/data/downloads:/home/seluser/Downloads
       tenfnan:
-        image: tenfnan/scrap_image:v1
+        image: tenfnan/scrap:latest
     steps:
 # Install R  
       - name: Run R script
