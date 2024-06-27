@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       # https://stackoverflow.com/questions/77936473/how-can-i-access-file-downloaded-using-rselenium-in-github-actions
+      # https://hub.docker.com/r/selenium/standalone-firefox
       selenium:
         image: selenium/standalone-firefox:111.0-20230328
         ports:
