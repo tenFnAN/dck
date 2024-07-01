@@ -34,7 +34,7 @@ for(type_ in c('atp', 'wta')){
 }
 
   print('new test')
-  rD <- rsDriver(browser = "firefox", port = 4444L, verbose = FALSE)
+  rD <- rsDriver(browser = "firefox", port = 4445L, verbose = FALSE)
   remote_driver <- rD[["client"]]
   print('after new test')
   print(.Platform$OS.type) 
