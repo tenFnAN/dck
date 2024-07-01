@@ -40,10 +40,10 @@ for(type_ in c('atp', 'wta')){
   print(.Platform$OS.type) 
   
   # scrap_start_session()
-  scrap_start_session( ) # check = F
-  print('session have started')
-  print(names(remote_driver))
-  
+  #scrap_start_session( ) # check = F
+  #print('session have started')
+  #print(names(remote_driver))
+  print('before navigate')
   scrap_navigate('https://www.flashscore.com/tennis/')
   Sys.sleep(3) 
   print(remote_driver$getTitle())
