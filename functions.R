@@ -108,7 +108,7 @@ change_polish_characters = function(x){
 get_schedule = function(url){ 
   tab_ = tryCatch({
     session <- tryCatch(polite::bow(url, user_agent = "Webscrapdding Tutorial"), error = function(e) { 'err'})
-    website1 = scrape(session) %>% html_nodes("#u868")
+    website1 = polite::scrape(session) %>% html_nodes("#u868")
     tab_ = html_table(website1[[1]],fill=TRUE)
     tab_ 
   }, error = function(e) { 
