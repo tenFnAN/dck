@@ -40,7 +40,7 @@ jobs:
         # -p (internal port):(external port) - tells docker which TCP ports to expose via the host’s network
         # -v /external/host/path:/internal/path - mounts a directory from the host to be available inside the image
         
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap:v1 Rscript scrap.R
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap2:v1 Rscript scrap.R
 # Commit & push
       - name: Commit files
         run: |
