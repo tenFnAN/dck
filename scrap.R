@@ -33,14 +33,13 @@ for(type_ in c('atp', 'wta')){
   tns_schedule = rbind(tns_schedule, tb_schedule_)
 }
 
-  print('new test')
-  rD <- rsDriver(browser = "firefox", port = 4444L, verbose = FALSE)
-  remote_driver <- rD[["client"]]
-  print('after new test')
+   #print('new test')
+   #rD <- rsDriver(browser = "firefox", port = 4444L, verbose = FALSE)
+   #remote_driver <- rD[["client"]]
+   #print('after new test')
   print(.Platform$OS.type) 
   
-  # scrap_start_session()
-  #scrap_start_session( ) # check = F
+  scrap_start_session( ) # check = F
   #print('session have started')
   #print(names(remote_driver))
   print('before navigate')
