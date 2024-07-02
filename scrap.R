@@ -6,7 +6,7 @@ library(RSelenium)
 source('functions.R')
 # https://stackoverflow.com/questions/65926899/how-can-i-get-an-r-environment-via-sys-getenv-with-github-actions-using-secret
 # https://stackoverflow.com/questions/77936473/how-can-i-access-file-downloaded-using-rselenium-in-github-actions
-system('echo abc')
+#system('echo abc')
 print('inside script')
 tns_schedule = data.frame()
 
