@@ -20,7 +20,7 @@ jobs:
   scrap:
     runs-on: ubuntu-latest
     steps:
-# Install R
+# Install R Rscript scrap.R
       - name: Checkout repository
         uses: actions/checkout@v2
  
@@ -29,7 +29,7 @@ jobs:
         
       - name: Run R script
         run: | 
-            docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap2:v1 Rscript scrap.R
+            docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap2:v1 R
 # Commit & push
       - name: Commit files
         run: |
