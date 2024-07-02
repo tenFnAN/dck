@@ -19,6 +19,15 @@ permissions:
 jobs:
   scrap:
     runs-on: ubuntu-latest
+    services:
+      # https://stackoverflow.com/questions/77936473/how-can-i-access-file-downloaded-using-rselenium-in-github-actions
+      # https://hub.docker.com/r/selenium/standalone-firefox
+      selenium:
+        image: selenium/standalone-firefox:111.0-20230328
+        ports:
+          - '4444:4444'
+        volumes:
+          - /github/workspace/data/downloads:/home/seluser/Downloads
     steps:
 # Install R Rscript scrap.R
       - name: Checkout repository
@@ -29,7 +38,7 @@ jobs:
         
       - name: Run R script
         run: | 
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap2:v1 Rscript /workspace/scrap.R
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap2:v1 Rscript /workspace/scrap_.R
           #docker run -d --name r-selenium-container -p 4444:4444 -m 4g tenfnan/rscrap2:v1
           #docker cp scrap_.R r-selenium-container:/home/seluser/scrap_.R
           #docker exec r-selenium-container Rscript /home/seluser/scrap_.R
