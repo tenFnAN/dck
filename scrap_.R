@@ -10,14 +10,14 @@ print(R.version)
 
 
  for(type_ in c('atp', 'wta')){
-  tb_schedule = get_schedule( url = str_glue('https://live-tennis.eu/en/{type_}-schedule') ) 
+  tb_schedule = get_schedule( url = stringr::str_glue('https://live-tennis.eu/en/{type_}-schedule') ) 
   
   tb_schedule_ = tb_schedule %>%
     reshape2::melt('Player_Name_1') %>%
     fmutate( Data = ymd(paste0(substr(variable, 13, 16), substr(variable, 7, 8), substr(variable, 10, 11) )),
              Position     = '',
              Priority     = '1',
-             Information = ifelse(str_detect(value, 'Qual'), 'QUALIFYING', 'MAIN DRAW'),
+             Information = ifelse(grepl('Qual', value), 'QUALIFYING', 'MAIN DRAW'),
              Kraj         = '',
              Nawierzchnia = '' ) %>%
     frename(Player = Player_Name_1, Turniej = value) %>%
