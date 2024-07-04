@@ -1,15 +1,16 @@
 #load libs
-library(dplyr)  ; library(collapse)   
-library(rvest)   
+#library(dplyr)  ; library(collapse)   
+#library(rvest)   
 #library(RSelenium)
+library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
+library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
 #source('/home/seluser/functions.R')
 source('functions.R')
-#library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
-#library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
 print('inside script')
 print(available_memory())
 print(R.version)
 
+print('system htop')
 
  for(type_ in c('atp', 'wta')){
   tb_schedule = get_schedule( url = stringr::str_glue('https://live-tennis.eu/en/{type_}-schedule') ) 
