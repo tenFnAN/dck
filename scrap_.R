@@ -4,8 +4,8 @@
 library(RSelenium)
 #library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
 #library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
-#source('/home/seluser/functions.R')
-source('functions.R')
+source('/home/seluser/functions.R')
+#source('functions.R')
 print('inside script')
 print(available_memory())
 print(R.version)
@@ -40,3 +40,6 @@ tns_schedule = data.frame()
  }
 print('end script')
 scrap_start_session( ) 
+print('afer sele')
+
+
