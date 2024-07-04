@@ -41,6 +41,7 @@ jobs:
           docker run -d --name kontener tenfnan/rscrap3:v1
           docker cp scrap_.R kontener:/home/seluser/scrap_.R
           docker cp functions.R kontener:/home/seluser/functions.R
+          docker exec kontener Rscript /home/seluser/scrap_.R
           #docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap3:v1 Rscript /workspace/scrap_.R
           #docker run -d --name r-selenium-container -p 4444:4444 -m 4g tenfnan/rscrap3:v1
           #docker exec r-selenium-container Rscript /home/seluser/scrap_.R
