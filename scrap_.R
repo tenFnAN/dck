@@ -1,5 +1,5 @@
 #load libs
-library(dplyr)   ; library(stringr) 
+library(dplyr)   ; library(stringr)  ; library(readr)
 #library(collapse)   
 #library(rvest)   
 #library(RSelenium)
