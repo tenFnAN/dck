@@ -310,4 +310,15 @@ available_memory <- function()
   return(bytes)
 
 }
-
+linux_my_process = function(.regex = '', .usr = Sys.getenv("USER")){
+  processes = system(command = paste0("ps -ef -u ",Sys.getenv("USER")),intern = TRUE) %>%
+    grep(.usr, ., value=T) %>% 
+    grep(.regex, ., value=T) %>% # binman firefox
+    as.data.frame() %>%
+    setNames('process') %>% 
+    mutate(usr      = trimws(str_extract(process, '^[a-z]{3,} ')),
+           pid      = str_extract(process, '[0-9]+'),                    # get PID
+           port     = parse_number(str_extract(process, 'port [0-9]+')), # get PORT 
+           nthreads = parse_number(str_extract(process, 'nthreads [0-9]+')) )  
+  processes
+}
