@@ -1,15 +1,16 @@
 #load libs
 #library(dplyr)  ; library(collapse)   
 #library(rvest)   
-#library(RSelenium)
-library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
-library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
+library(RSelenium)
+#library(dplyr)  ; library(collapse)  ; library(data.table); library(purrr) ; library(lubridate)
+#library(rvest)  ; library(polite)    ; library(stringr)   ; library(readr)
 #source('/home/seluser/functions.R')
 source('functions.R')
 print('inside script')
 print(available_memory())
 print(R.version)
-
+if(F){
+ 
 #print('system htop')
 tns_schedule = data.frame()
  for(type_ in c('atp', 'wta')){
@@ -36,5 +37,6 @@ tns_schedule = data.frame()
   tns_schedule = rbind(tns_schedule, tb_schedule_)
 }
 
+ }
 print('end script')
 scrap_start_session( ) 
