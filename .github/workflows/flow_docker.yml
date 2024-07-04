@@ -38,12 +38,12 @@ jobs:
         
       - name: Run R script
         run: | 
-          #docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap3:v1 Rscript /workspace/scrap_.R
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap:v1 Rscript /workspace/scrap_.R
           #docker run -d --name r-selenium-container -p 4444:4444 -m 4g tenfnan/rscrap3:v1
-          docker run -d --name r-selenium-container -m 4g tenfnan/rscrap:v1
-          docker cp scrap_.R r-selenium-container:/home/seluser/scrap_.R
-          docker cp functions.R r-selenium-container:/home/seluser/functions.R
-          docker exec r-selenium-container Rscript /home/seluser/scrap_.R
+          #docker run -d --name r-selenium-container -m 4g tenfnan/rscrap:v1
+          #docker cp scrap_.R r-selenium-container:/home/seluser/scrap_.R
+          #docker cp functions.R r-selenium-container:/home/seluser/functions.R
+          #docker exec r-selenium-container Rscript /home/seluser/scrap_.R
             #docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace tenfnan/rscrap3:v1 Rscript scrap.R
 # Commit & push
       - name: Commit files
