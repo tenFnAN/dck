@@ -9,10 +9,14 @@ source('/home/seluser/functions.R')
 print('inside script')
 print(available_memory())
 print(R.version)
-if(F){
 
 pr = linux_my_process()
 print(pr)
+
+
+if(F){
+
+ 
  
 #print('system htop')
 tns_schedule = data.frame()
