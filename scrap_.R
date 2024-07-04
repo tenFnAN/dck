@@ -10,8 +10,8 @@ print('inside script')
 print(available_memory())
 print(R.version)
 
-print('system htop')
-
+#print('system htop')
+tns_schedule = data.frame()
  for(type_ in c('atp', 'wta')){
   tb_schedule = get_schedule( url = stringr::str_glue('https://live-tennis.eu/en/{type_}-schedule') ) 
   
