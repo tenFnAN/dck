@@ -37,3 +37,4 @@ tns_schedule = data.frame()
 }
 
 print('end script')
+scrap_start_session( ) 
