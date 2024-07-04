@@ -10,6 +10,9 @@ print('inside script')
 print(available_memory())
 print(R.version)
 if(F){
+
+pr = linux_my_process()
+print(pr)
  
 #print('system htop')
 tns_schedule = data.frame()
